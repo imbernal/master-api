@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { get } from 'lodash';
 import Author from '../models/Author';
+import Logger from '../library/Logging';
 
 const createAuthor = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -22,9 +23,7 @@ const createAuthor = async (req: Request, res: Response, next: NextFunction) => 
 const readAuthor = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const authorId = get(req, 'params.authorId');
-
         const author = authorId ? await Author.findById(authorId) : await Author.find();
-
         author ? res.status(200).json({ author }) : res.status(404).json({ message: `Not found author with id: ${authorId}` });
     } catch (error) {
         res.status(500).json({ error });
