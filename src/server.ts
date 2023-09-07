@@ -63,10 +63,10 @@ const StartServer = () => {
         tokenExpiration: 3600000 //Up to default expiration of 1 hour (3600000 ms)
     });
 
-    //Our middleware that authenticates all APIs under our 'authenticatedRoute' Router
+    //Our middleware that authenticates all APIs under our Router
     router.use(function (req, res, next) {
         //I'm passing in the access token in header under key accessToken
-        let accessTokenFromClient = req.headers.accesstoken;
+        let accessTokenFromClient = req.headers.bearerToken;
 
         //Fail if token not present in header.
         if (!accessTokenFromClient) return res.status(401).send('Access Token missing from header');
