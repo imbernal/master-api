@@ -1,0 +1,32 @@
+version: '4'
+
+services:
+  # Mongodb Service
+  # mongo_db:
+  #   container_name: mongo_container
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: "double2Admin"
+  #     MONGO_INITDB_ROOT_PASSWORD: "LgjpJbX0HHmke1cd"
+  #     MONGO_INITDB_DATABASE: "twinbooks"
+  #   ports:
+  #     - "27017:27017"
+    # Use volumes only if create a local database
+    # volumes:
+    #   - mongo_db:/data/db
+      
+
+  # Express API service
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    # environment:
+    #   MONGO_URI: "mongo_db://double2Admin:LgjpJbX0HHmke1cd@mongodb:27017/twinbooks"
+    # depends_on:
+    #   - mongo_db
+
+# Use volumes only if create a local database
+# volumes:
+#   mongo_db: {}

@@ -9,3 +9,9 @@ coverage
 
 # Benchmarking
 benchmarks/graphs
+
+# vscode
+.vscode
+
+# Ignore build folder
+dist

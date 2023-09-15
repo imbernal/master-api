@@ -4,8 +4,9 @@
     "description": "Set-up for any API REST",
     "main": "src/server.ts",
     "scripts": {
-        "build": "rm -rf build/ && tsc",
-        "start": "node build/server.js"
+        "dev": "ts-node-dev --poll src/index.ts",
+        "build": "rimraf ./dist && tsc",
+        "start": "npm run build && node dist/index.js"
     },
     "author": "",
     "license": "ISC",
@@ -21,6 +22,8 @@
     },
     "devDependencies": {
         "@types/express": "^4.17.17",
+        "rimraf": "^3.0.2",
+        "ts-node-dev": "^2.0.0",
         "@types/lodash": "^4.14.198",
         "typescript": "^5.2.2"
     }
